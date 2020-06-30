@@ -4,7 +4,7 @@ with recursive node_depth(node, depth) as (
     select edges.child as node, node_depth.depth + 1 as depth
     from edges inner join node_depth
         on edges.parent = node_depth.node)
-select node, min(depth) as min_depth -- or use max() for maximum depth
+select node, min(depth) as min_depth, max(depth) as max_depth
 from node_depth
 group by node
 order by min_depth;

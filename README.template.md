@@ -1,7 +1,7 @@
 <!-- Do not edit README.md directly. Edit README.template.md and run make. -->
 joshua-tree
 ===========
-<img height="300" src="joshua-tree.jpg"/><img width="400" src="joshua-tree.jpg"/>
+<img width="400" src="joshua-tree.jpg"/>
 
 Why
 ---
@@ -19,14 +19,27 @@ sqlite> .mode columns
 sqlite> .headers on
 sqlite> .read table.sql
 sqlite> .read graphs/simple.sql
-sqlite> .read max-depth.sql
-node        max_depth 
-----------  ----------
-root        0         
-A           1         
-B           1         
-C           2         
-D           3 
+sqlite> .read depth.sql
+node        min_depth   max_depth 
+----------  ----------  ----------
+root        0           0         
+A           1           1         
+B           1           1         
+C           2           2         
+D           2           3         
+sqlite> 
+```
+
+It might be convenient to automate the running of the first three commands.
+```console
+$ sqlite3 -cmd '.mode columns' -cmd '.headers on' -cmd '.read table.sql'
+sqlite>
+```
+
+For convenience, `init.sql` can be used with `sqlite3`'s `-init` flag.
+```console
+$ sqlite3 -init init.sql
+sqlite>
 ```
 
 More

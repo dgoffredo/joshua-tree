@@ -1,4 +1,4 @@
-<!-- Do not edit README.md directly. Edit its template. -->
+<!-- Do not edit README.md directly. Edit README.template.md and run make. -->
 joshua-tree
 ===========
 <img width="400" src="joshua-tree.jpg"/>
@@ -12,10 +12,42 @@ What
 These are sqlite3 scripts that perform various operations on an
 `edges(child, parent)` table.
 
+How
+---
+```
+sqlite> .mode columns
+sqlite> .headers on
+sqlite> .read table.sql
+sqlite> .read graphs/simple.sql
+sqlite> .read depth.sql
+node        min_depth   max_depth 
+----------  ----------  ----------
+root        0           0         
+A           1           1         
+B           1           1         
+C           2           2         
+D           2           3         
+sqlite> 
+```
+
+It might be convenient to automate the running of the first three commands.
+```console
+$ sqlite3 -cmd '.mode columns' -cmd '.headers on' -cmd '.read table.sql'
+sqlite>
+```
+
+For convenience, `init.sql` can be used with `sqlite3`'s `-init` flag.
+```console
+$ sqlite3 -init init.sql
+sqlite>
+```
 
 More
 ----
 ### Graphs
+
+#### [graphs/figure-eight.edges](graphs/figure-eight.edges)
+![](graphs/figure-eight.svg)
 
 #### [graphs/simple.edges](graphs/simple.edges)
 ![](graphs/simple.svg)

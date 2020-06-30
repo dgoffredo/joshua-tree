@@ -1,0 +1,23 @@
+#!/bin/sh
+
+links=$(mktemp)
+
+for svg in graphs/*.svg; do
+    edges=$(echo $svg | sed 's/\.svg$/.edges/')
+    echo "#### [$edges]($edges)" >> $links
+    echo "![]($svg)" >> $links
+    echo >> $links
+done
+
+script=$(mktemp)
+>$script cat <<END_SCRIPT
+/GRAPHS_GO_HERE/ {
+    s/.*//
+    r $links
+}
+END_SCRIPT
+
+sed -f $script
+
+rm $links
+rm $script

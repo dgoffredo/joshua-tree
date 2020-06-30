@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo 'delete from edges;'
+echo 'insert into edges(child, parent)'
+echo 'values'
+
+# The first row isn't preceded by a comma. The rest are.
+awk 'NR==1 {print "    (" $1 ", " $2 ")"}    {print "    ,(" $1 ", " $2 ")"}' | \
+    sed "s/\w\+/'\0'/g" # otherwise the single-quoting is a mess in awk
+
+# Don't forget your semicolon.
+echo ';'

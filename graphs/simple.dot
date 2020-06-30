@@ -1,0 +1,10 @@
+digraph {
+    bgcolor="transparent"
+
+    "A" -> "root"
+    "B" -> "root"
+    "C" -> "A"
+    "C" -> "B"
+    "D" -> "C"
+    "D" -> "B"
+}

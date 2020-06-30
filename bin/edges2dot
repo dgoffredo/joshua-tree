@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo 'digraph {'
+echo '    bgcolor="transparent"'
+echo
+
+awk '{print "    \""$1"\" -> \""$2"\""}'
+
+echo '}'

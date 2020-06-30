@@ -45,7 +45,7 @@ $ sqlite3 -init init.sql
 sqlite>
 ```
 
-Here's the kicker:
+Here's the punchline:
 ```console
 $ sqlite3 -init init.sql 
 -- Loading resources from init.sql

@@ -12,6 +12,8 @@ What
 These are sqlite3 scripts that perform various operations on an
 `edges(child, parent)` table.
 
+The [SQLite documentation on hierarchical queries][2] is informative.
+
 How
 ---
 ```
@@ -30,7 +32,7 @@ D           2           3
 sqlite> 
 ```
 
-It might be convenient to automate the running of the first three commands.
+You might want to automate the running of the first three commands.
 ```console
 $ sqlite3 -cmd '.mode columns' -cmd '.headers on' -cmd '.read table.sql'
 sqlite>
@@ -48,3 +50,4 @@ More
 GRAPHS_GO_HERE
 
 [1]: https://dgoffredo.github.io/site/break-cycles.html
+[2]: https://www.sqlite.org/draft/lang_with.html#hierarchical_query_examples

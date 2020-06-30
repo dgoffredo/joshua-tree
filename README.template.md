@@ -21,7 +21,8 @@ sqlite> .mode columns
 sqlite> .headers on
 sqlite> .read table.sql
 sqlite> .read graphs/simple.sql
-sqlite> .read depth.sql
+sqlite> .read depths.sql
+sqlite> select * from depths;
 node        min_depth   max_depth 
 ----------  ----------  ----------
 root        0           0         
@@ -41,6 +42,24 @@ sqlite>
 For convenience, `init.sql` can be used with `sqlite3`'s `-init` flag.
 ```console
 $ sqlite3 -init init.sql
+sqlite>
+```
+
+Here's the kicker:
+```console
+$ sqlite3 -init init.sql 
+-- Loading resources from init.sql
+SQLite version 3.31.1 2020-01-27 19:55:54
+Enter ".help" for usage hints.
+sqlite> .read diamonds.sql
+sqlite> .read graphs/figure-eight.sql
+sqlite> select * from diamonds;
+descendent  ancestor1   ancestor2   ancestor_max_depth
+----------  ----------  ----------  ------------------
+E           A           B           1                 
+G           A           B           1                 
+G           C           D           2                 
+G           E           F           3                 
 sqlite>
 ```
 
